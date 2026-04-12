@@ -1,7 +1,18 @@
 import requests
+import os
 
-url = "https://www.fcbarcelona.com/en/tickets/football/regular/laliga/fcbarcelona-realmadrid?_gl=1*1w2gghi*_gcl_aw*R0NMLjE3NzU4MTUwNzQuQ2owS0NRand2LUxPQmhDZEFSSXNBTTVoZEtkV2JUQk9od3AzYjJ3RkNMLWhHcXRUbWxlcWEyaDM4WlZ1UVo4bjFMeDJfZ3MwWTExMF81c2FBdnJYRUFMd193Y0I.*_gcl_dc*R0NMLjE3NzU4MTUwNzQuQ2owS0NRand2LUxPQmhDZEFSSXNBTTVoZEtkV2JUQk9od3AzYjJ3RkNMLWhHcXRUbWxlcWEyaDM4WlZ1UVo4bjFMeDJfZ3MwWTExMF81c2FBdnJYRUFMd193Y0I.*_gcl_au*MzQzMzkxOTUxLjE3NzQzNTI1NzE."
-html = requests.get(url).text
+WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK")
 
-if "Temporarily unavailable" in html:
-    print("Found!")
+url = "https://www.fcbarcelona.com/en/tickets/football/regular/laliga/fcbarcelona-realmadrid"
+headers = {"User-Agent": "Mozilla/5.0"}
+
+def send_discord(msg):
+    requests.post(WEBHOOK_URL, json={"content": msg})
+
+html = requests.get(url, headers=headers).text
+
+if "Temporarily unavailable" not in html:
+    send_discord("🚨 Ticket page changed! Check now!")
+    print("FOUND!")
+else:
+    print("Still unavailable")
