@@ -11,7 +11,7 @@ def send_discord(msg):
 
 html = requests.get(url, headers=headers).text
 
-if "Temporarily unavailable" not in html:
+if "Temporarily unavailable1" not in html:
     send_discord("🚨 Ticket page changed! Check now!")
     print("FOUND!")
 else:
