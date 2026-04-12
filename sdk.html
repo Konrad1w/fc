@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook SDK Test</title>
+</head>
+<body>
+
+  <h1>Facebook SDK Test</h1>
+  <button id="loginBtn">Zaloguj się przez Facebook</button>
+
+  <script>
+    // Inicjalizacja SDK
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 'YOUR_APP_ID', // zamień na swoje App ID
+        cookie     : true,           // pozwala na użycie ciasteczek
+        xfbml      : true,           // pozwala renderować social plugins
+        version    : 'v23.0'         // wersja Graph API
+      });
+
+      // Opcjonalnie: sprawdź status logowania od razu
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    };
+
+    // Funkcja obsługująca status logowania
+    function statusChangeCallback(response) {
+      if (response.status === 'connected') {
+        console.log('Zalogowany! Access Token:', response.authResponse.accessToken);
+      } else {
+        console.log('Nie zalogowany lub nie autoryzował aplikacji.');
+      }
+    }
+
+    // Funkcja logowania po kliknięciu przycisku
+    document.getElementById('loginBtn').addEventListener('click', function() {
+      FB.login(function(response) {
+        if (response.authResponse) {
+          console.log('Zalogowany! Access Token:', response.authResponse.accessToken);
+        } else {
+          console.log('Użytkownik anulował logowanie lub nie autoryzował aplikacji.');
+        }
+      }, {scope: 'public_profile,email,groups_access_member_info'});
+    });
+
+  </script>
+
+  <!-- SDK Facebooka -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+</html>
