@@ -11,7 +11,7 @@ URLS_KRK = [
     "https://licytacje.komornik.pl/wyszukiwarka-licytacji?province=ma%C5%82opolskie&mainCategory=MOVABLE&city=lubie%C5%84",
     "https://licytacje.komornik.pl/wyszukiwarka-licytacji?province=ma%C5%82opolskie&mainCategory=MOVABLE&city=tenczyn",
     "https://licytacje.komornik.pl/wyszukiwarka-licytacji?mainCategory=REAL_ESTATE&city=lubie%C5%84&province=ma%C5%82opolskie",
-    "https://licytacje.komornik.pl/wyszukiwarka-licytacji?mainCategory=REAL_ESTATE&city=tenczyn&province=ma%C5%82opolskie"
+    "https://licytacje.komornik.pl/wyszukiwarka-licytacji?mainCategory=REAL_ESTATE&city=kornatka&province=ma%C5%82opolskie"
 ]
 
 # 2. Sąd Rejonowy w Myślenicach
