@@ -1,4 +1,4 @@
-name: Ticket Checker
+name: Actions Checker
 
 on:
   schedule:
@@ -19,9 +19,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests beautifulsoup4
 
       - name: Run checker
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: python checker.py
+        run: python licytacje_v2.py
