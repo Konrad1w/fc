@@ -103,12 +103,11 @@ def sprawdz_licytacje():
             komunikat += f"👉 {link}\n"
 
         powiadom_discord(komunikat)
+        with open(PLIK_STANU, 'w', encoding='utf-8') as f:
+            json.dump(list(aktualne_linki), f, indent=4)
     else:
         print("Brak nowych licytacji.")
 
-    # Zapisanie nowego stanu
-    with open(PLIK_STANU, 'w', encoding='utf-8') as f:
-        json.dump(list(aktualne_linki), f, indent=4)
 
 
 if __name__ == "__main__":
